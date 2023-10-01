@@ -16,6 +16,7 @@ return new class extends Migration
             $table->string('task');
             $table->text('description')->nullable();
             $table->boolean('completed')->default(false);
+            $table->date('completed_at')->nulllable();
             $table->timestamps();
         });
     }

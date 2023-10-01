@@ -16,7 +16,9 @@ class TaskController extends Controller
      */
     public function index()
     {
-        $tasks = Task::latest()->paginate(25);
+        $tasks = Task::orderBy('updated_at', 'desc')->paginate(25);
+        $complete = Task::where('completed', true)->get();
+        $incomplete = Task::where('completed', false)->get();
         return response()->view('task.index', compact('tasks'));
     }
 
@@ -105,6 +107,22 @@ class TaskController extends Controller
       ->userTasks()
       ->latest()
       ->paginate(25);
-    return response()->view('task.index', compact('tasks'));
+    $name = User::query()->find(Auth::user()->id)->name;
+    return response()->view('task.index', compact('tasks', 'name'));
     }
+
+    public function complete(string $id) {
+        $task = Task::find($id);
+        if($task->completed === 0) {
+            $task->completed = 1;
+            $task->completed_at = now();
+        } else {
+            $task->completed = 0;
+            $task->completed_at = $task->created_at;
+        }
+        $task->save();
+        return redirect()->route('task.index', $id);
+    }
+
+   
 }

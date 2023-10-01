@@ -19,13 +19,21 @@ class TaskFactory extends Factory
         return [
             'user_id' => null, 
             'task'=> fake()->sentence(3),
-            'description'=> fake()->paragraph,
+            'description'=> fake()->paragraph(10),
+            'completed' => fake()->boolean(),
             'created_at'=>fake()->dateTimeBetween('-2 years'),
-            'completed'=>fake()->boolean(),
             'updated_at'=>function (array $attributes) {
                 return fake()-> dateTimeBetween($attributes['created_at']);
-            }
-
+            },
+            'completed_at'=>function (array $attributes) {
+                    if ($attributes['completed'] === true) {
+                        return $attributes['updated_at'];
+                    } else {
+                        return $attributes['created_at'];
+                    }
+                }
         ];
     }
+
+
 }

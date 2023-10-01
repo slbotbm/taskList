@@ -4,7 +4,7 @@ use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\TaskController;
 use App\Http\Controllers\SearchController;
-
+use App\Http\Controllers\UserController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -19,7 +19,9 @@ Route::middleware('auth')->group(function () {
     Route::get('/task/search/input', [SearchController::class, 'create'])->name('search.input');
     Route::get('/task/search/result', [SearchController::class, 'index'])->name('search.result');
     Route::get('/task/mypage', [TaskController::class, 'mydata'])->name('task.mypage');
+    Route::put('task/{id}/toggle-complete', [TaskController::class, 'complete'])->name('task.toggle');
     Route::resource('task', TaskController::class);
+    Route::resource('user', UserController::class);
 });
 
 Route::middleware('auth')->group(function () {

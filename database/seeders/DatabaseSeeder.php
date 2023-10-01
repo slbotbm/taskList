@@ -13,9 +13,11 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        \App\Models\User::factory(20)->create()->each(function ($user) {
+        \App\Models\User::factory(50)->create()->each(function ($user) {
             $numTasks = random_int(5, 30);
-            Task::factory()->count($numTasks)->for($user)->create();
+            Task::factory()
+            ->count($numTasks)
+            ->for($user)->create();
         });
         
     }
