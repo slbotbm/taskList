@@ -40,7 +40,6 @@ class TaskController extends Controller
             'task' => 'required | max:191',
             'description' => 'required',
         ]);
-
         if ($validator->fails()) {
             return redirect()
             ->route('task.create')

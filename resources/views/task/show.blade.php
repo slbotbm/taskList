@@ -88,13 +88,14 @@
             @endif
             <div class="flex items-center justify-end mt-4">
                       <x-secondary-button class="ml-3" onclick="myFunction()">
-                        Share
+                        {{__('Share')}}
                       </x-primary-button>
 </div>
             <div class="flex items-center justify-end mt-4">
             <a href="{{ url()->previous() }}">
               <x-secondary-button class="ml-3">
                 {{ __('Back') }}
+                
               </x-primary-button>
             </a>
             </div>
