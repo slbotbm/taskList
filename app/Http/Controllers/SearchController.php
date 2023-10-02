@@ -29,7 +29,7 @@ class SearchController extends Controller
         $users = User::where('name', 'like', "%{$keyword}%")->distinct()->get();
         $tasks = Task::query()->where('task', 'like', "%{$keyword}%")->distinct()->get();
         $descriptions = Task::query()->where('description', 'like', "%{$keyword}%")->distinct('task')->get();
-        $ids = User::query()->where('id', 'like', "%{$keyword}%")->get();
+        $ids = Task::query()->where('id', 'like', "%{$keyword}%")->get();
         return response()->view('search.result', compact('tasks', 'descriptions', 'users', 'ids'));
     }
 
