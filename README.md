@@ -15,7 +15,7 @@
 
 ## デプロイ先の URL または画面収録したファイル名
 
-dec2023Phase01.mp4
+DEC2023_Phase01/15/dec2023Phase01.mp4
 
 ## 使い方
 
