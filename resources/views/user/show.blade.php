@@ -1,13 +1,12 @@
-<!-- resources/views/tweet/index.blade.php -->
-
 <x-app-layout>
   <x-slot name="header">
     <h2 class="font-semibold text-xl text-gray-800 leading-tight dark:text-gray-200">
       {{ $user->name }}
     </h2>
-    <h3 class="text-sm text-left font-bold text-lg text-gray-dark dark:text-gray-200">Contributor since: {{$user->created_at->format('d/m/Y')}}</h3>
+    
+    <h3 class="text-sm text-left font-bold text-lg text-gray-dark dark:text-gray-200">{{$user->email}}</h3>
+    <h3 class="text-sm text-left font-bold text-lg text-gray-dark dark:text-gray-200">Contributor since: {{$user->created_at->format('d/m/Y')}}</h3>                 
   </x-slot>
-
   <div class="py-12">
     <div class="max-w-7xl mx-auto sm:w-10/12 md:w-8/10 lg:w-8/12">
       <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
